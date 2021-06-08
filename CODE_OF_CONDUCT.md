@@ -3,7 +3,8 @@
 
 ## Our Pledge
 
-We as members, contributors, and leaders pledge to make participation in PROJECT NAME project and our
+We as members, contributors, and leaders pledge to make participation in 
+the vsphere-with-tanzu-proof-of-concept-samples project and our
 community a harassment-free experience for everyone, regardless of age, body
 size, visible or invisible disability, ethnicity, sex characteristics, gender
 identity and expression, level of experience, education, socio-economic status,
