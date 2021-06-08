@@ -1,0 +1,10 @@
+apiVersion: run.tanzu.vmware.com/v1alpha1
+kind: TkgServiceConfiguration
+metadata:
+  name: tkg-service-configuration
+spec:
+  defaultCNI: antrea
+  trust:
+    additionalTrustedCAs:
+      - name: harbor-ca
+         data: [CERT GOES HERE]
