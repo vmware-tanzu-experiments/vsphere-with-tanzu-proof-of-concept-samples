@@ -19,7 +19,7 @@ This is a rough outline of what a contributor's workflow looks like:
 Example:
 
 ``` shell
-git remote add upstream https://github.com/vmware/test20210607003.git
+git remote add upstream https://github.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples.git
 git checkout -b my-new-feature main
 git commit -a
 git push origin my-new-feature
