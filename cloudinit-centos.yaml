@@ -1,0 +1,26 @@
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachine
+metadata:
+  name: centos-vmsvc
+  namespace: ns2
+spec:
+  networkInterfaces:
+    - networkName: network-1
+      networkType: vsphere-distributed
+  className: best-effort-small
+  imageName: centos-stream-8-vmservice-v1alpha1.20210222
+  powerState: poweredOn
+  storageClass: vsan-default-storage-policy
+  vmMetadata:
+    configMapName: centos-vmsvc
+    transport: OvfEnv
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: centos-vmsvc
+  namespace: ns2
+data:
+  user-data: |
+    I2Nsb3VkLWNvbmZpZwpjaHBhc3N3ZDoKICAgICAgdWJ1bn…
+  hostname: centos-vmsvc
