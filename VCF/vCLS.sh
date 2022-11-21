@@ -26,7 +26,7 @@ echo -n Checking for govc...
 
 if govc version 2>/dev/null 1>/dev/null
 then 
-	echo govc found
+	echo $(govc version)
 else
 	echo No govc command found... you can find it here:
 	echo https://github.com/vmware/govmomi/releases/latest/download/govc_$(uname -s)_$(uname -m).tar.gz
