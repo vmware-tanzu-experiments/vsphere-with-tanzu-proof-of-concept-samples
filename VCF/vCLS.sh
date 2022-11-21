@@ -64,7 +64,7 @@ echo -n Checking for cluster...
 
 if govc find -type c | grep $cluster 2>/dev/null
 then
-	echo found cluster $cluster
+	echo \>\>found cluster $cluster
 else
 	echo Failed!
 	echo Please check the cluster name
@@ -74,10 +74,10 @@ else
 fi
 
 
-echo setting vCLS state in $cluster to $2
+echo Setting vCLS state in $cluster to $2
 domain=$(govc find -verbose=true -type c 2> >(grep $cluster) | grep -oEm 1 'domain-c\w+')
 
-echo found domain $domain
+echo \>\>found domain $domain
 	
 # Do the thing 
 
@@ -90,6 +90,11 @@ then
 else
 	echo Hmmm...something went wrong, sorry
 	exit
+fi
+
+if [[ $(echo $?) -eq 0 ]]
+then echo Done!
+else echo Sorry, something went wrong
 fi
 
 
