@@ -81,10 +81,10 @@ echo \>\>found domain $domain
 	
 # Do the thing 
 
-if [[ $2 -eq 'disable' ]]
+if [[ "$2" == "disable" ]]
 then
 	govc option.set config.vcls.clusters.$domain.enabled false
-elif [[ $2 -eq 'enable' ]]
+elif [[ "$2" == "enable" ]]
 then
 	govc option.set config.vcls.clusters.$domain.enabled true
 else
