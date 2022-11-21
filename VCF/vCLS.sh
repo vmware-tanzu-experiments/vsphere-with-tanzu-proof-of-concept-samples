@@ -64,7 +64,7 @@ echo -n Checking for cluster...
 
 if govc find -type c | grep $cluster 2>/dev/null
 then
-	echo
+	echo found cluster $cluster
 else
 	echo Failed!
 	echo Please check the cluster name
