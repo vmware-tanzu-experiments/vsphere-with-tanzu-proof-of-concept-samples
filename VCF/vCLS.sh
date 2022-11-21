@@ -7,7 +7,7 @@
 
 
 # check the input args
-#if [[ $# -lt 2 || $1 -eq '-h' ]]
+
 if [[ $# -lt 2 ]]
   then
     echo "Usage: vCLS.sh <Cluster Name> <enable|disable> "
