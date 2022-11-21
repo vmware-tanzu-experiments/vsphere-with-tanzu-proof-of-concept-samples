@@ -75,16 +75,15 @@ fi
 
 
 echo setting vCLS state in $cluster to $2
+domain=$(govc find -verbose=true -type c 2> >(grep $cluster) | grep -oEm 1 'domain-c\w+')
 	
 # Do the thing 
 
 if [[ $2 -eq 'disable' ]]
 then
-	domain=$(govc find -verbose=true -type c 2> >(grep $cluster) | grep -oEm 1 'domain-c\w+')
 	govc option.set config.vcls.clusters.$domain.enabled false
 elif [[ $2 -eq 'enable' ]]
 then
-	domain=$(govc find -verbose=true -type c 2> >(grep $cluster) | grep -oEm 1 'domain-c\w+')
 	govc option.set config.vcls.clusters.$domain.enabled true
 else
 	echo Hmmm...something went wrong, sorry
