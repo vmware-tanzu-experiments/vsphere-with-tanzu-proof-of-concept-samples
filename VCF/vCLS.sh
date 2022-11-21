@@ -76,6 +76,8 @@ fi
 
 echo setting vCLS state in $cluster to $2
 domain=$(govc find -verbose=true -type c 2> >(grep $cluster) | grep -oEm 1 'domain-c\w+')
+
+echo found domain $domain
 	
 # Do the thing 
 
