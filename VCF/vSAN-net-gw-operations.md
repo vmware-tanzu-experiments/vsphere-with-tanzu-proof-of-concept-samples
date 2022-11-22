@@ -9,7 +9,7 @@
 
 
 ## 
-# Get the vsan adaptor and interface details
+# Get the vsan adapter and interface details
 ## 
 
 vmk=$(esxcli vsan network list | grep VmkNic | cut -d : -f2)
