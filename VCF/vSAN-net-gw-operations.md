@@ -13,7 +13,6 @@
 ## 
 
 vmk=$(esxcli vsan network list | grep VmkNic | cut -d : -f2)
-for i in 3 6 19;do eval net$i=\" $(esxcli network ip interface ipv4 get -i $vmk | grep $vmk | cut -d " " -f $i) \";done
 for i in 2 3 6;do eval net$i=\" $(esxcli network ip interface ipv4 get -i $vmk | grep $vmk | awk -v I=$i '{print $I}') \";done
 
 ## 
