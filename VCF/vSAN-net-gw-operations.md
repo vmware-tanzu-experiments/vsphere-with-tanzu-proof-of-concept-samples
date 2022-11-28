@@ -1,6 +1,6 @@
 #################################################################
 #
-#  Remove/re-apply gateway for the vSAN vmk adaptor for testing
+#  Remove/re-apply gateway for the vSAN vmk adapter for testing
 #  Only works with a single vSAN vmk
 # 
 #  TO USE: carefully copy+paste the commands to the esxi shell
