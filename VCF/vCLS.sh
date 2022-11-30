@@ -9,7 +9,12 @@
 
 usage() 
 {
-  echo "Usage: $0  -c 'cluster name' -s [enable|disable]" 1>&2
+  echo Enable or disable the vCLS VMs in a cluster
+  echo Sets an advanced parameter in vCenter
+  echo Uses govc \(https://github.com/vmware/govmomi/tree/master/govc\)
+  echo 
+  echo "$0  -c 'cluster name' -s [enable|disable]" 1>&2
+  echo
   exit 1
 }
 
@@ -50,6 +55,18 @@ undefined_error()
 	exit 1
 }
 
+set_vcls()
+{
+    govc option.set config.vcls.clusters.$domain.enabled $1
+    return $?
+}
+
+end()
+{
+	[[ $(echo $1) -eq 0 ]] && echo Done! || undefined_error
+	exit $1
+}
+
 
 # check the input args
 
@@ -80,7 +97,6 @@ done
 
 
 # Check for govc
-# (verbose redirect for max. compat.)
 echo -n Checking for govc... 
 [[ $(govc version) ]] && echo OK || govc_fail
 
@@ -98,16 +114,9 @@ domain=$(govc find -verbose=true -type c 2> >(grep -E "\<$cluster\$") | grep -oE
 [[ $(echo $?) -eq 0 ]] && echo \>\>Cluster $cluster translates to MOB object $domain || undefined_error
 	
 # Do the thing 
-if [[ "$state" == "disable" ]]
-then
-	govc option.set config.vcls.clusters.$domain.enabled false
-elif [[ "$state" == "enable" ]]
-then
-	govc option.set config.vcls.clusters.$domain.enabled true
-else
-    undefined_error
-fi
+[[ "$state" == "disable" ]] && set_vcls "false" && end $? || [[ "$state" == "enable" ]] && set_vcls "true" && end $?
 
-[[ $(echo $?) -eq 0 ]] && echo Done! || undefined_error
+# Catch anything else
+end 1
 
 
