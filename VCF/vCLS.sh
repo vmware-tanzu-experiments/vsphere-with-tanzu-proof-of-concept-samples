@@ -9,21 +9,24 @@
 
 usage() 
 {
-  echo Enable or disable the vCLS VMs in a cluster
-  echo Sets an advanced parameter in vCenter
-  echo Uses govc \(https://github.com/vmware/govmomi/tree/master/govc\)
-  echo 
-  echo "$0  -c 'cluster name' -s [enable|disable]" 1>&2
-  echo
-  exit 1
+	echo Enable or disable the vCLS VMs in a cluster (vCLS Retreat Mode)
+	echo Sets an advanced parameter in vCenter
+	echo Uses govc \(https://github.com/vmware/govmomi/tree/master/govc\)
+	echo 
+	echo "$0  -c 'cluster name' -s [enable|disable]" 1>&2
+	echo
+	exit 1
 }
 
 cluster_fail()
 {
 	echo Failed!
+	echo
 	echo Please check the cluster name
 	echo Available clusters are:
-	govc find -type c | awk -F'/' '{print $NF}'
+	echo
+	govc find -type c | awk -F'/' '{print "\"" $NF  "\""}'
+	echo
 	exit 1
 }
 
@@ -38,6 +41,7 @@ vc_fail()
 	echo export GOVC_PASSWORD=your_vcenter_password
 	echo export GOVC_INSECURE=1
 	echo export GOVC_URL=your_vcenter_ip_address
+	echo
 	exit 1
 }
 
@@ -79,10 +83,7 @@ while getopts ":c:s:" options; do
       ;;
     s)
       state=${OPTARG}
-      if [[ $state != 'disable' ]] && [[ $state != 'enable' ]]
-      then
-        usage
-      fi
+      ! [[ ($state == 'disable') || ($state == 'enable') ]] && usage
       ;;
     :)
       echo "Error: -${OPTARG} requires an argument."
