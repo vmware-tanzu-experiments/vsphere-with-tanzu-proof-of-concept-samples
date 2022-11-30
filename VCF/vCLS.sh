@@ -9,7 +9,7 @@
 
 usage() 
 {
-	echo Enable or disable the vCLS VMs in a cluster (vCLS Retreat Mode)
+	echo Enable or disable the vCLS VMs in a cluster \(vCLS Retreat Mode\)
 	echo Sets an advanced parameter in vCenter
 	echo Uses govc \(https://github.com/vmware/govmomi/tree/master/govc\)
 	echo 
