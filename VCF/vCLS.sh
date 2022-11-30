@@ -47,9 +47,10 @@ vc_fail()
 
 govc_fail()
 {
-    echo No govc command found. 
+    echo No govc command found... 
     echo You can download it here:
 	echo https://github.com/vmware/govmomi/releases/latest/download/govc_$(uname -s)_$(uname -m).tar.gz
+	echo
 	exit 1
 }
 
