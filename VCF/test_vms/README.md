@@ -67,13 +67,13 @@ base64 -i user-data
 I2Nsb3VkLWNvbmZpZwpydW5jbWQ6CiAgLSAnZWNobyAiZGlzYWJsZV92bXdhcmVfY3VzdG9taXphdGlvbjogZmFsc2UiID4+IC9ldGMvY2xvdWQvY2xvdWQuY2ZnJwogIC0gZWNobyAtbiA+IC9ldGMvbWFjaGluZS1pZAogIC0gfAogICAgc2VkIC1pICcnIC1lICdzL21hdGNoLiovZGhjcC1pZGVudGlmaWVyOiBtYWMvZycgLWUgJy9tYWMvcScgL2V0Yy9uZXRwbGFuLzUwLWNsb3VkLWluaXQueWFtbApmaW5hbF9tZXNzYWdlOiAiVGhlIHN5c3RlbSBpcyBwcmVwcGVkLCBhZnRlciAkVVBUSU1FIHNlY29uZHMiCnBvd2VyX3N0YXRlOgogIHRpbWVvdXQ6IDMwCiAgbW9kZTogcG93ZXJvZmYK
 ```
 
-Now we can edit the JSON file we extracted earlier. Change the file with the following:
-•	Disk provisioning set to ‘thin’
-•	Add the public key of the machine we are connecting from
-•	Remove the hostname and password data
-•	Set the network for the VM (the name of the relevant portgroup in vCenter)
-•	Set the name of the VM
-•	In the ‘user-data’ section, paste in the  base64 encoded data
+Now we can edit the JSON file we extracted earlier. Change the file with the following:<br>
+•	Disk provisioning set to ‘thin’<br>
+•	Add the public key of the machine we are connecting from<br>
+•	Remove the hostname and password data<br>
+•	Set the network for the VM (the name of the relevant portgroup in vCenter)<br>
+•	Set the name of the VM<br>
+•	In the ‘user-data’ section, paste in the  base64 encoded data<br>
 
 An example of this file can be seen here:
 https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples/main/VCF/test_vms/ubuntu-vm.json
