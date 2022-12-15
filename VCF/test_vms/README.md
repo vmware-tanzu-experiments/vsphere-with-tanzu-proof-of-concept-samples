@@ -22,7 +22,7 @@ export GOVC_INSECURE=1
 export GOVC_URL=10.156.163.1 
 ```
 
-Additionally, we will need to specify the default datastore and resource pool (we can define this as the default/top-level cluster, as per blow)for deploying our VMs:
+Additionally, we will need to specify the default datastore and resource pool (we can define this as the default/top-level cluster, as per blow) for deploying our VMs:
 ```
 export GOVC_DATASTORE=ESA-vsanDatastore
 export GOVC_RESOURCE_POOL='vSAN ESA Cluster/Resources'
