@@ -44,16 +44,20 @@ First, specify a location of an OVA file to use. In the example below, we use an
 
 `export vmLocation=https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64.ova`
 
+
 We can then add our customizations, etc. by extracting the JSON from the OVA:
 
 `govc import.spec $vmLocation > ubuntu-vm.json`
+
 
 buntu uses cloud-init to setup the OS. As we will be cloning the deployed VM, we need to define specific user-data (which will be encoded in base-64 and added to the customization JSON). Here we modify the default netplan config file to ensure DHCP addresses are assigned by mac address.
 To simplify the process, the user-data file can be downloaded from the link below:
 https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples/main/VCF/test_vms/user-data
 
 If available, use cloud-init to check the user-data file:
+
 `cloud-init schema --config-file user-data`
+
 
 Next, we encode the user-data to base64:
 ```
@@ -74,23 +78,34 @@ https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-pr
 
 
 Once this JSON file has been defined, we can double-check our user-data encoding is still correct:
+
 `awk -F '"' '/user-data/{ getline; print $4}' ubuntu-vm.json | base64 -d`
+
 
 This should return the user-data as we defined above.
 
 ## Import OVA to vCenter and Clone
 We can then import the OVA into vCenter, specifying our JSON customization file:
+
 `govc import.ova -options=ubuntu-vm.json -name=ubuntu-vm $vmLocation`
 
+
 After this has imported, we can update the virtual disk size. Here we set it to 100G:
+
 `govc vm.disk.change -vm ubuntu-vm -disk.label "Hard disk 1" -size 100G`
 
+
 Power on the VM to allow it to run cloud-init (and thus our previously defined commands). Once complete, the VM will shutdown:
+
 `govc vm.power -on ubuntu-vm`
 
+
 Once the VM has shutdown, mark it as a template:
+
 `govc vm.markastemplate ubuntu-vm`
 
+
 Finally, we can clone our template VM as we need to. In the example below, we clone it ten times:
+
 `for x in {1..10};do govc vm.clone -vm ubuntu-vm ubuntu-vm$x;done`
 
