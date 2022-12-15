@@ -4,7 +4,7 @@ For a more verbose procedure, visit Myles Gray’s blog:
 https://blah.cloud/infrastructure/using-cloud-init-for-vm-templating-on-vsphere
 
 ## Requirements:
-•	FreeBSD, Linux or MacOS VM/host environment
+•	FreeBSD, Linux or MacOS VM/host environment<br>
 •	Latest version of govc (download instructions below)
 
 ## Download govc:
