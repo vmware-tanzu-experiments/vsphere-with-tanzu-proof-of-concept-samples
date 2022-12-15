@@ -41,9 +41,11 @@ Build:        20519528
 
 ## Configure Test VM
 First, specify a location of an OVA file to use. In the example below, we use an Ubuntu 22.04 cloud image:
+
 `export vmLocation=https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64.ova`
 
 We can then add our customizations, etc. by extracting the JSON from the OVA:
+
 `govc import.spec $vmLocation > ubuntu-vm.json`
 
 buntu uses cloud-init to setup the OS. As we will be cloning the deployed VM, we need to define specific user-data (which will be encoded in base-64 and added to the customization JSON). Here we modify the default netplan config file to ensure DHCP addresses are assigned by mac address.
