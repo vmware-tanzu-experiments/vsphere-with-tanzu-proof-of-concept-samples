@@ -1,0 +1,10 @@
+#cloud-config
+runcmd:
+  - 'echo "disable_vmware_customization: false" >> /etc/cloud/cloud.cfg'
+  - echo -n > /etc/machine-id
+  - |
+    sed -i '' -e 's/match.*/dhcp-identifier: mac/g' -e '/mac/q' /etc/netplan/50-cloud-init.yaml
+final_message: "The system is prepped, after $UPTIME seconds"
+power_state:
+  timeout: 30
+  mode: poweroff
