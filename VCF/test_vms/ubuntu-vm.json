@@ -1,0 +1,42 @@
+{
+  "DiskProvisioning": "thin",
+  "IPAllocationPolicy": "dhcpPolicy",
+  "IPProtocol": "IPv4",
+  "PropertyMapping": [
+    {
+      "Key": "instance-id",
+      "Value": "id-ovf"
+    },
+    {
+      "Key": "hostname",
+      "Value": ""
+    },
+    {
+      "Key": "seedfrom",
+      "Value": ""
+    },
+    {
+      "Key": "public-keys",
+      "Value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDymmj/ITjZXJJ+oQ90LUtE5In5evn0BJMOFuN771VHNfefULJCbMVY0XBWGXs6ZfxrKrpJ9w3Sm82mbmgxXMj+O60WvAefyWVXNePB75WurtOhy2OK+Jxc06l82/YrF0flI2XXewCO6c7PJZuULKX8WASha0a/8G+zL8WXXYoJnMDhAETH+7V8wZASDGgNKRCCvo2WwKLsLzGh02oLjkR0f5BfcyxGEoKFtCTzIHdLIYw9WA+0FSy70D4koN5bCiBYuFF2Js4GxJ0efb77nHjVEMYM3CvBntHmTwLk/VViicbNB2yF370px/pv4ga2tIeMc4FvupUIoJ/MoCWFQwT"
+    },
+    {
+      "Key": "user-data",
+      "Value": "I2Nsb3VkLWNvbmZpZwpydW5jbWQ6CiAgLSAnZWNobyAiZGlzYWJsZV92bXdhcmVfY3VzdG9taXphdGlvbjogZmFsc2UiID4+IC9ldGMvY2xvdWQvY2xvdWQuY2ZnJwogIC0gc2VkIC1pICdzL0QgXC90bXAgMTc3NyByb290IHJvb3QgLS8jRCBcL3RtcCAxNzc3IHJvb3Qgcm9vdCAtL2cnIC91c3IvbGliL3RtcGZpbGVzLmQvdG1wLmNvbmYKICAtIGVjaG8gLW4gPiAvZXRjL21hY2hpbmUtaWQKZmluYWxfbWVzc2FnZTogIlRoZSBzeXN0ZW0gaXMgcHJlcHBlZCwgYWZ0ZXIgJFVQVElNRSBzZWNvbmRzIgpwb3dlcl9zdGF0ZToKICB0aW1lb3V0OiAzMAogIG1vZGU6IHBvd2Vyb2ZmCg=="
+    },
+    {
+      "Key": "password",
+      "Value": ""
+    }
+  ],
+  "NetworkMapping": [
+    {
+      "Name": "VM Network",
+      "Network": "DSwitch-DHCP"
+    }
+  ],
+  "MarkAsTemplate": false,
+  "PowerOn": false,
+  "InjectOvfEnv": false,
+  "WaitForIP": false,
+  "Name": "ubuntu-vm"
+}
