@@ -113,5 +113,5 @@ Finally, we can clone our template VM as we need to. In the example below, we cl
 
 After cloning, we can batch-execute commands on all the VMs. For example, the 'ls' command:
 
-` govc find -type m -name 'photon-*' | xargs -P0 -I '{}' bash -c 'ssh -o "StrictHostKeyChecking=no" root@$(govc vm.ip {}) ls' `
+` govc find -type m -name 'ubuntu-vm*' | xargs -P0 -I '{}' bash -c 'ssh -o "StrictHostKeyChecking=no" root@$(govc vm.ip {}) ls' `
 
