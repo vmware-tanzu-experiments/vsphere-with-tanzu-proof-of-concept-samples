@@ -99,7 +99,7 @@ After this has imported, we can update the virtual disk size. Here we set it to 
 
 Power on the VM to allow it to run cloud-init (and thus our previously defined commands). Once complete, the VM will shutdown:
 
-`govc vm.power -on ubuntu-vm`
+`govc vm.power -on ubuntu-template`
 
 
 Once the VM has shutdown, mark it as a template:
