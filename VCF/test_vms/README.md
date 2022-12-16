@@ -81,7 +81,7 @@ https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-pr
 
 Once this JSON file has been defined, we can double-check our user-data encoding is still correct:
 
-`awk -F '"' '/user-data/{ getline; print $4}' ubuntu-vm.json | base64 -d`
+`awk -F '"' '/user-data/{getline; print $4}' ubuntu-vm.json | base64 -d`
 
 
 This should return the user-data as we defined above.
