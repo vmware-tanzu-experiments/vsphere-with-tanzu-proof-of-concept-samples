@@ -109,7 +109,7 @@ Once the VM has shutdown, mark it as a template:
 
 Finally, we can clone our template VM as we need to. In the example below, we clone it ten times:
 
-`for x in {1..10};do govc vm.clone -vm ubuntu-template ubuntu-vm$x;done`
+`for x in {1..10};do govc vm.clone -vm ubuntu-template ubuntu-vm$x &;done`
 
 After cloning, we can batch-execute commands on all the VMs. For example, the 'ls' command:
 
