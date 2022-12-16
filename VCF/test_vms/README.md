@@ -89,12 +89,12 @@ This should return the user-data as we defined above.
 ## Import OVA to vCenter and Clone
 We can then import the OVA into vCenter, specifying our JSON customization file:
 
-`govc import.ova -options=ubuntu-vm.json -name=ubuntu-vm $vmLocation`
+`govc import.ova -options=ubuntu-vm.json -name=ubuntu-template $vmLocation`
 
 
 After this has imported, we can update the virtual disk size. Here we set it to 100G:
 
-`govc vm.disk.change -vm ubuntu-vm -disk.label "Hard disk 1" -size 100G`
+`govc vm.disk.change -vm ubuntu-template -disk.label "Hard disk 1" -size 100G`
 
 
 Power on the VM to allow it to run cloud-init (and thus our previously defined commands). Once complete, the VM will shutdown:
@@ -104,12 +104,12 @@ Power on the VM to allow it to run cloud-init (and thus our previously defined c
 
 Once the VM has shutdown, mark it as a template:
 
-`govc vm.markastemplate ubuntu-vm`
+`govc vm.markastemplate ubuntu-template`
 
 
 Finally, we can clone our template VM as we need to. In the example below, we clone it ten times:
 
-`for x in {1..10};do govc vm.clone -vm ubuntu-vm ubuntu-vm$x;done`
+`for x in {1..10};do govc vm.clone -vm ubuntu-template ubuntu-vm$x;done`
 
 After cloning, we can batch-execute commands on all the VMs. For example, the 'ls' command:
 
