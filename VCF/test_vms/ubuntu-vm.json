@@ -38,5 +38,5 @@
   "PowerOn": false,
   "InjectOvfEnv": false,
   "WaitForIP": false,
-  "Name": "ubuntu-vm"
+  "Name": "ubuntu-template"
 }
