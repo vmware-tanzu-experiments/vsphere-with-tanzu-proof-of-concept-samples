@@ -12,7 +12,9 @@ Govc is a lightweight, open-source CLI tool written in Go (and part of the Govmo
 
 To download the latest release, use the command below. As with the majority of Go projects, it is packaged as a single binary (note that the tar command requires root privileges to copy the binary to the correct location):
 
-` curl -L -o - "https://github.com/vmware/govmomi/releases/latest/download/govc_$(uname -s)_$(uname -m).tar.gz" | tar -C /usr/local/bin -xvzf - govc `
+``` 
+curl -L -o - "https://github.com/vmware/govmomi/releases/latest/download/govc_$(uname -s)_$(uname -m).tar.gz" | tar -C /usr/local/bin -xvzf - govc
+```
 
 ## Connecting to vCenter
 To authenticate with vCenter, we need to define the username, password and URL, as per the example below:
@@ -44,12 +46,16 @@ Build:        20519528
 ## Configure Test VM
 First, specify a location of an OVA file to use. In the example below, we use an Ubuntu 22.04 cloud image:
 
-`export vmLocation=https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64.ova`
+```
+export vmLocation=https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64.ova
+```
 
 
 We can then add our customizations, etc. by extracting the JSON from the OVA:
 
-`govc import.spec $vmLocation > ubuntu-vm.json`
+```
+govc import.spec $vmLocation > ubuntu-vm.json
+```
 
 
 Ubuntu uses cloud-init to setup the OS. As we will be cloning the deployed VM, we need to define specific user-data (which will be encoded in base-64 and added to the customization JSON). Here we ensure that vSphere specific configuration is not disabled, and we modify the default netplan config file to ensure DHCP addresses are assigned by mac address.
@@ -58,7 +64,9 @@ https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-pr
 
 If available, use cloud-init to check the user-data file:
 
-`cloud-init schema --config-file user-data`
+```
+cloud-init schema --config-file user-data
+```
 
 
 Next, we encode the user-data to base64:
