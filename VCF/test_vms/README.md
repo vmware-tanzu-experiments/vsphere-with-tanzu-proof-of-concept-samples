@@ -78,6 +78,18 @@ Now we can edit the JSON file we extracted earlier. Change the file with the fol
 An example of this file can be seen here:
 https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples/main/VCF/test_vms/ubuntu-vm.json
 
+Note we can avoid hand-editing the json by using `jq`:
+For example, we can update the user-data:
+
+```
+jq 'select(.Key=="user-data").Value="$(base64 -i user-data)"' ubuntu-vm.json
+```
+
+Similarly, adding a public key stored in a user's github profile:
+
+```
+jq 'select(.Key=="public-keys").Value="$(curl -sk https://api.github.com/users/[github user]/keys | jq -r '.[].key')"' ubuntu-vm.json
+```
 
 Once this JSON file has been defined, we can double-check our user-data encoding is still correct:
 
