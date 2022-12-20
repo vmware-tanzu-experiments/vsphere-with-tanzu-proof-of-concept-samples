@@ -93,7 +93,9 @@ jq 'select(.Key=="public-keys").Value="$(curl -sk https://api.github.com/users/[
 
 Once this JSON file has been defined, we can double-check our user-data encoding is still correct:
 
-```awk -F '"' '/user-data/{getline; print $4}' ubuntu-vm.json | base64 -d```
+```
+awk -F '"' '/user-data/{getline; print $4}' ubuntu-vm.json | base64 -d`
+```
 
 
 This should return the user-data as we defined above.
@@ -101,37 +103,53 @@ This should return the user-data as we defined above.
 ## Import OVA to vCenter and Clone
 We can then import the OVA into vCenter, specifying our JSON customization file:
 
-```govc import.ova -options=ubuntu-vm.json -name=ubuntu-template $vmLocation```
+```
+govc import.ova -options=ubuntu-vm.json -name=ubuntu-template $vmLocation
+```
 
 
 After this has imported, we can update the virtual disk size. Here we set it to 100G:
 
-```govc vm.disk.change -vm ubuntu-template -disk.label "Hard disk 1" -size 100G```
+```
+govc vm.disk.change -vm ubuntu-template -disk.label "Hard disk 1" -size 100G
+```
 
 
 Power on the VM to allow it to run cloud-init (and thus our previously defined commands). Once complete, the VM will shutdown:
 
-```govc vm.power -on ubuntu-template```
+```
+govc vm.power -on ubuntu-template
+```
 
 
 Once the VM has shutdown, mark it as a template:
 
-````govc vm.markastemplate ubuntu-template```
+```
+govc vm.markastemplate ubuntu-template
+```
 
 
 Finally, we can clone our template VM as we need to. In the example below, we clone it ten times:
 
-```for x in {1..10};do govc vm.clone -vm ubuntu-template ubuntu-vm$x;done```
+```
+for x in {1..10};do govc vm.clone -vm ubuntu-template ubuntu-vm$x;done
+```
 
 To do this for a large number of VMs, in parallel (and output to a log file) we could run:
 
-```for x in {1..250};do (govc vm.clone -vm ubuntu-template ubuntu-vm$x >> $(date +%d%m-%H%M)_clone.log 2>&1 &);done```
+```
+for x in {1..250};do (govc vm.clone -vm ubuntu-template ubuntu-vm$x >> $(date +%d%m-%H%M)_clone.log 2>&1 &);done
+```
 
 We can monitor progress by probing the vCenter task-list:
 
-```govc tasks -f -l```
+```
+govc tasks -f -l
+```
 
 After cloning, we can batch-execute commands on all the VMs. For example, the 'ls' command:
 
-```govc find -type m -name 'ubuntu-vm*' | xargs -P0 -I '{}' bash -c 'ssh -o "StrictHostKeyChecking=no" ubuntu@$(govc vm.ip {}) ls'```
+```
+govc find -type m -name 'ubuntu-vm*' | xargs -P0 -I '{}' bash -c 'ssh -o "StrictHostKeyChecking=no" ubuntu@$(govc vm.ip {}) ls'
+```
 
