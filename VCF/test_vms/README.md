@@ -86,9 +86,9 @@ Now we can edit the JSON file we extracted earlier. Change the file with the fol
 An example of this file can be seen here:
 https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples/main/VCF/test_vms/ubuntu-vm.json
 
-Note we can avoid hand-editing the json by using 
+Note we can avoid hand-editing the json by using `jq`
 <details>
-  <summary>`jq`</summary>
+  <summary>Updating using jq:</summary>
   
 For example, we can update the `user-data`:
 
