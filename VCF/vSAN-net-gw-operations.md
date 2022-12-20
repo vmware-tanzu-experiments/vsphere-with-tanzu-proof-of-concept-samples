@@ -1,5 +1,5 @@
 #  Remove/re-apply gateway for the vSAN vmk adapter for testing
-==Only works with with the FIRST vSAN vmk==
+===Only works with with the FIRST vSAN vmk=== <br>
 TO USE: carefully copy+paste the commands to the esxi shell
 
 
