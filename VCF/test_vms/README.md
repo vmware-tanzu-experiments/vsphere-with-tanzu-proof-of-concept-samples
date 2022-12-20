@@ -88,7 +88,7 @@ https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-pr
 
 Note we can avoid hand-editing the json by using `jq`
 <details>
-  <summary>Updating using jq:</summary>
+  <summary> # Updating using jq: </summary>
   
 For example, we can update the `user-data`:
 
@@ -102,7 +102,6 @@ Similarly, adding a public key stored in a user's github profile:
 jq 'select(.Key=="public-keys").Value="$(curl -sk https://api.github.com/users/[github user]/keys | jq -r '.[].key')"' ubuntu-vm.json
 ```
 
-  </summary>
 </details>
 
 
