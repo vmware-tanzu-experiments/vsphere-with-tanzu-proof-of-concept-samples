@@ -95,13 +95,13 @@ Note we can avoid hand-editing the json by using `jq`
 For example, we can update the `user-data`:
 
 ```
-jq 'select(.Key=="user-data").Value="$(base64 -i user-data)"' ubuntu-vm.json
+jq 'select(.Key=="user-data").Value="$(base64 -i user-data)"' ubuntu-vm.json > ubuntu-vm-updated.json
 ```
 
 Similarly, adding a public key stored in a user's github profile:
 
 ```
-jq 'select(.Key=="public-keys").Value="$(curl -sk https://api.github.com/users/[github user]/keys | jq -r '.[].key')"' ubuntu-vm.json
+jq 'select(.Key=="public-keys").Value="$(curl -sk https://api.github.com/users/[github user]/keys | jq -r '.[].key')"' ubuntu-vm.json > ubuntu-vm-updated.json
 ```
 
 </details>
