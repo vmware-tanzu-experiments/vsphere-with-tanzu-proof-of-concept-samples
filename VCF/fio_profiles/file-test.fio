@@ -1,9 +1,12 @@
+# file test
+# change directory as appropriate 
+
 [global]
+directory=/mnt/dbfs
 filesize=4G
 time_based=1
 startdelay=5
 create_serialize=0
-directory=/mnt/dbfs
 group_reporting=1
 runtime=300
 ioengine=posixaio
