@@ -44,6 +44,8 @@ Build:        20519528
 
 
 ## Configure Test VM
+
+### Get the VM image JSON file
 First, specify a location of an OVA file to use. In the example below, we use an Ubuntu 22.04 cloud image:
 
 ```
@@ -57,6 +59,7 @@ We can then add our customizations, etc. by extracting the JSON from the OVA:
 govc import.spec $vmLocation > ubuntu-vm.json
 ```
 
+### Customise the VM image JSON file
 
 Ubuntu uses cloud-init to setup the OS. As we will be cloning the deployed VM, we need to define specific user-data (which will be encoded in base-64 and added to the customization JSON). Here we ensure that vSphere specific configuration is not disabled, and we modify the default netplan config file to ensure DHCP addresses are assigned by mac address.
 To simplify the process, the user-data file can be downloaded from the link below:
