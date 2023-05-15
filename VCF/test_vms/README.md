@@ -116,7 +116,7 @@ mv ubuntu-vm-updated-again.json ubuntu-vm.json
 Once this JSON file has been defined, we can double-check our user-data encoding is still correct:
 
 ```
-awk -F '"' '/user-data/{getline; print $4}' ubuntu-vm.json | base64 -d`
+awk -F '"' '/user-data/{getline; print $4}' ubuntu-vm.json | base64 -d''
 ```
 
 
