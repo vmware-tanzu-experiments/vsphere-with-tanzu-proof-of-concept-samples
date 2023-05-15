@@ -215,6 +215,6 @@ govc tasks -f -l
 After cloning, we can batch-execute commands on all the VMs. For example, the 'ls' command:
 
 ```bash
-govc find -type m -name 'ubuntu-vm*' | xargs -P0 -I '{}' bash -c 'ssh -o "StrictHostKeyChecking=no" ubuntu@$(govc vm.ip {}) ls'
+govc find -type m -name 'ubuntu-vm*' | xargs -P0 -I '{}' bash -c 'ssh -o "StrictHostKeyChecking=no" ubuntu@$(govc vm.ip {}) uptime -p'
 ```
 
