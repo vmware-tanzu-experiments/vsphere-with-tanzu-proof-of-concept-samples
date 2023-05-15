@@ -112,9 +112,10 @@ An example of this file can be seen here:
 https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples/main/VCF/test_vms/ubuntu-vm.json
 
 ### Using `jq` to update the VM image JSON
+We can either directly hand-edit the VM image JSON or use the `jq` utility (recommended)
 <details>
   <summary> 
-  Updating the VM JSON using jq: 
+  Updating the VM JSON using `jq`: 
   </summary>
   
 For example, we can update the `user-data`:
@@ -123,17 +124,28 @@ For example, we can update the `user-data`:
 jq --arg udata "$(base64 -i user-data)" '(.PropertyMapping[] | select(.Key=="user-data")).Value |= $udata' ubuntu-vm.json > ubuntu-vm-updated.json
 ```
 
-Similarly, adding a public key stored in a user's github profile:
-  N.B.: REPLACE WITH DESIRED USER!
+We can add the public key, stored locally:
+  
+```
+jq --arg pubkey "$(cat ~/.ssh/id_rsa.pub)" '(.PropertyMapping[] | select(.Key=="public-keys")).Value |= $pubkey' ubuntu-vm-updated.json > ubuntu-vm-updated-1.json
+```
+  
+Or we could add a public key stored in a user's github profile: <br>
+  **N.B.: REPLACE WITH DESIRED `USER`!**
 
 ```bash
-jq --arg pubkey "$(curl -sk https://api.github.com/users/darkmesh-b/keys | jq -r '.[].key')" '(.PropertyMapping[] | select(.Key=="public-keys")).Value |= $pubkey' ubuntu-vm-updated.json > ubuntu-vm-updated-again.json
+jq --arg pubkey "$(curl -sk https://api.github.com/users/darkmesh-b/keys | jq -r '.[].key')" '(.PropertyMapping[] | select(.Key=="public-keys")).Value |= $pubkey' ubuntu-vm-updated.json > ubuntu-vm-updated-1.json
 ```
+Add the virtual network that the VM will use
 
+```bash
+jq --arg network "DSwitch-DHCP" '(.NetworkMapping[] | select(.Name=="VM Network")).Network |= $network' ubuntu-vm-updated-1.json > ubuntu-vm-updated-2.json
+```
+  
 Finally, consolidate these changes by overwriting the original json:  
 
 ```bash
-mv ubuntu-vm-updated-again.json ubuntu-vm.json
+mv ubuntu-vm-updated-2.json ubuntu-vm.json
 ```
 
 </details>
