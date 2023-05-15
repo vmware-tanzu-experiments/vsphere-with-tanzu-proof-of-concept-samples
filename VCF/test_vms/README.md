@@ -212,9 +212,31 @@ We can monitor progress by probing the vCenter task-list:
 govc tasks -f -l
 ```
 
-After cloning, we can batch-execute commands on all the VMs. For example, the 'ls' command:
+After cloning, we can batch-execute commands on all the VMs. For example, the 'uptime' command (run in parallel:
 
 ```bash
 govc find -type m -name 'ubuntu-vm*' | xargs -P0 -I '{}' bash -c 'ssh -o "StrictHostKeyChecking=no" ubuntu@$(govc vm.ip {}) uptime -p'
+```
+
+A simple bash script can also be written to run commands, for example:
+
+```bash
+cat > run_all.sh << EOF
+#!/bin/bash
+export input=\$1
+govc find -type m -name 'ubuntu-vm*' | xargs -P0 -I '{}' bash -c 'ssh -o "StrictHostKeyChecking=no" ubuntu@\$(govc vm.ip {}) "\$input"'
+EOF
+```
+
+Make the script excutable:
+
+```bash
+chmod +x run_all.sh
+```
+
+Thus we can then run parallel commands on all the VMs trivially:
+
+```bash
+./run_all.sh "uname -a"
 ```
 
