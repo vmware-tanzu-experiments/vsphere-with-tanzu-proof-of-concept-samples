@@ -115,7 +115,7 @@ mv ubuntu-vm-updated-again.json ubuntu-vm.json
 
 Once this JSON file has been defined, we can double-check our user-data encoding is still correct:
 
-```
+```bash
 awk -F '"' '/user-data/{getline; print $4}' ubuntu-vm.json | base64 -d''
 ```
 
@@ -154,7 +154,7 @@ govc vm.markastemplate ubuntu-template
 
 Finally, we can clone our template VM as we need to. In the example below, we clone it ten times:
 
-```
+```bash
 for x in {1..10};do govc vm.clone -vm ubuntu-template ubuntu-vm$x;done
 ```
 
@@ -172,7 +172,7 @@ govc tasks -f -l
 
 After cloning, we can batch-execute commands on all the VMs. For example, the 'ls' command:
 
-```
+```bash
 govc find -type m -name 'ubuntu-vm*' | xargs -P0 -I '{}' bash -c 'ssh -o "StrictHostKeyChecking=no" ubuntu@$(govc vm.ip {}) ls'
 ```
 
