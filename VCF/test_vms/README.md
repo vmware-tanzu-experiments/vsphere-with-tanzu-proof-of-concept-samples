@@ -176,7 +176,8 @@ govc vm.disk.change -vm ubuntu-template -disk.label "Hard disk 1" -size 100G
 ```
 
 
-Power on the VM to allow it to run cloud-init (and thus our previously defined commands). Once complete, the VM will shutdown:
+Power on the VM to allow it to run cloud-init (and thus our previously defined commands). 
+**Once complete, the VM will shutdown by itself
 
 ```
 govc vm.power -on ubuntu-template
