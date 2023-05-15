@@ -260,7 +260,7 @@ Daemonize `FIO` in worker mode:
 ./run_all.sh 'fio --server --daemonize=/tmp/fio.pid'
 ```
 
-We can then run an FIO test over the workers:
+We can then run an [FIO test](https://github.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples/blob/main/VCF/fio_profiles/file-test.fio) over the workers:
 
 ```bash
 fio --client=worker_vms file-test.fio
