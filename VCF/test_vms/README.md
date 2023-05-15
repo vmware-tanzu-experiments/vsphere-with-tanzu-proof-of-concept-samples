@@ -62,6 +62,26 @@ Ubuntu uses cloud-init to setup the OS. As we will be cloning the deployed VM, w
 To simplify the process, the user-data file can be downloaded from the link below:
 https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples/main/VCF/test_vms/user-data
 
+<details>
+  <summary> 
+  Example user-data file: 
+  </summary>
+  
+  ```
+  #cloud-config
+runcmd:
+  - 'echo "disable_vmware_customization: false" >> /etc/cloud/cloud.cfg'
+  - echo -n > /etc/machine-id
+  - |
+    sed -i '' -e 's/match.*/dhcp-identifier: mac/g' -e '/mac/q' /etc/netplan/50-cloud-init.yaml
+final_message: "The system is prepped, after $UPTIME seconds"
+power_state:
+  timeout: 30
+  mode: poweroff
+  ```
+
+  </details>
+
 If available, use cloud-init to check the user-data file:
 
 ```
@@ -88,7 +108,7 @@ https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-pr
 Note we can avoid hand-editing the json by using `jq`
 <details>
   <summary> 
-  ##Updating the VM JSON using jq: 
+  Updating the VM JSON using jq: 
   </summary>
   
 For example, we can update the `user-data`:
