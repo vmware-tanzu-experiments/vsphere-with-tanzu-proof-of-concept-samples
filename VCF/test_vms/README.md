@@ -94,13 +94,20 @@ Note we can avoid hand-editing the json by using `jq`
 For example, we can update the `user-data`:
 
 ```
-jq 'select(.Key=="user-data").Value="$(base64 -i user-data)"' ubuntu-vm.json > ubuntu-vm-updated.json
+jq --arg udata "$(base64 -i user-data)" '(.PropertyMapping[] | select(.Key=="user-data")).Value |= $udata' ubuntu-vm.json > ubuntu-vm-updated.json
 ```
 
 Similarly, adding a public key stored in a user's github profile:
+  N.B.: REPLACE WITH DESIRED USER!
 
 ```
-jq 'select(.Key=="public-keys").Value="$(curl -sk https://api.github.com/users/[github user]/keys | jq -r '.[].key')"' ubuntu-vm.json > ubuntu-vm-updated.json
+jq --arg pubkey "$(curl -sk https://api.github.com/users/darkmesh-b/keys | jq -r '.[].key')" '(.PropertyMapping[] | select(.Key=="public-keys")).Value |= $pubkey' ubuntu-vm-updated.json > ubuntu-vm-updated-again.json
+```
+
+Finally, consolidate these changes by overwriting the original json:  
+
+```
+mv ubuntu-vm-updated-again.json ubuntu-vm.json
 ```
 
 </details>
