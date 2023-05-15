@@ -72,7 +72,6 @@ cloud-init schema --config-file user-data
 Next, we encode the user-data to base64:
 ```
 base64 -i user-data
-I2Nsb3VkLWNvbmZpZwpydW5jbWQ6CiAgLSAnZWNobyAiZGlzYWJsZV92bXdhcmVfY3VzdG9taXphdGlvbjogZmFsc2UiID4+IC9ldGMvY2xvdWQvY2xvdWQuY2ZnJwogIC0gZWNobyAtbiA+IC9ldGMvbWFjaGluZS1pZAogIC0gfAogICAgc2VkIC1pICcnIC1lICdzL21hdGNoLiovZGhjcC1pZGVudGlmaWVyOiBtYWMvZycgLWUgJy9tYWMvcScgL2V0Yy9uZXRwbGFuLzUwLWNsb3VkLWluaXQueWFtbApmaW5hbF9tZXNzYWdlOiAiVGhlIHN5c3RlbSBpcyBwcmVwcGVkLCBhZnRlciAkVVBUSU1FIHNlY29uZHMiCnBvd2VyX3N0YXRlOgogIHRpbWVvdXQ6IDMwCiAgbW9kZTogcG93ZXJvZmYK
 ```
 
 Now we can edit the JSON file we extracted earlier. Change the file with the following:<br>
