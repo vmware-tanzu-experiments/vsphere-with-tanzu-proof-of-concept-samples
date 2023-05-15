@@ -111,7 +111,7 @@ Now we can edit the JSON file we extracted earlier. Change the file with the fol
 An example of this file can be seen here:
 https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples/main/VCF/test_vms/ubuntu-vm.json
 
-Note we can avoid hand-editing the json by using `jq`
+### Using `jq` to update the VM image JSON
 <details>
   <summary> 
   Updating the VM JSON using jq: 
