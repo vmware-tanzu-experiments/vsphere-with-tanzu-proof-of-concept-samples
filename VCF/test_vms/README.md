@@ -65,12 +65,14 @@ First, we need a user-data file to pass into cloud-init.
 
 (This file tells cloud-init not to disable vSphere specific configurationd, and we modify the default netplan config file to ensure DHCP addresses are assigned by mac address.)
 
-The user-data file can be direcly downloaded from the link below (using curl, etc.):
-https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples/main/VCF/test_vms/user-data
+The user-data file can be direcly downloaded using curl
+```
+curl -o user-data -sk https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples/main/VCF/test_vms/user-data
+```
 
 <details>
   <summary> 
-  Example user-data file: 
+  Example user-data file (for reference): 
   </summary>
   
   ```
