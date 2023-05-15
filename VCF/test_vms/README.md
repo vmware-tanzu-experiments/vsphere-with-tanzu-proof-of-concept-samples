@@ -133,13 +133,13 @@ jq --arg pubkey "$(cat ~/.ssh/id_rsa.pub)" '(.PropertyMapping[] | select(.Key=="
 ```
   
 Or we could add a public key stored in a user's github profile: <br>
-  **N.B.: REPLACE WITH DESIRED `USER`!**
+***N.B.: REPLACE WITH DESIRED `USER`!***
 
 ```bash
 jq --arg pubkey "$(curl -sk https://api.github.com/users/darkmesh-b/keys | jq -r '.[].key')" '(.PropertyMapping[] | select(.Key=="public-keys")).Value |= $pubkey' ubuntu-vm-updated.json > ubuntu-vm-updated-1.json
 ```
 Add the virtual network that the VM will use <br>
-***replace with the relevant portgroup in your environment***
+***Replace 'DSwitch-DHCP' with the relevant portgroup in your environment***
 
 ```bash
 jq --arg network "DSwitch-DHCP" '(.NetworkMapping[] | select(.Name=="VM Network")).Network |= $network' ubuntu-vm-updated-1.json > ubuntu-vm-updated-2.json
