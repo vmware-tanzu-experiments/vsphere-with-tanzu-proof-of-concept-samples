@@ -93,20 +93,20 @@ Note we can avoid hand-editing the json by using `jq`
   
 For example, we can update the `user-data`:
 
-```
+```bash
 jq --arg udata "$(base64 -i user-data)" '(.PropertyMapping[] | select(.Key=="user-data")).Value |= $udata' ubuntu-vm.json > ubuntu-vm-updated.json
 ```
 
 Similarly, adding a public key stored in a user's github profile:
   N.B.: REPLACE WITH DESIRED USER!
 
-```
+```bash
 jq --arg pubkey "$(curl -sk https://api.github.com/users/darkmesh-b/keys | jq -r '.[].key')" '(.PropertyMapping[] | select(.Key=="public-keys")).Value |= $pubkey' ubuntu-vm-updated.json > ubuntu-vm-updated-again.json
 ```
 
 Finally, consolidate these changes by overwriting the original json:  
 
-```
+```bash
 mv ubuntu-vm-updated-again.json ubuntu-vm.json
 ```
 
@@ -121,6 +121,7 @@ awk -F '"' '/user-data/{getline; print $4}' ubuntu-vm.json | base64 -d''
 
 
 This should return the user-data as we defined above.
+
 
 ## Import OVA to vCenter and Clone
 We can then import the OVA into vCenter, specifying our JSON customization file:
