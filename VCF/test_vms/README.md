@@ -212,6 +212,8 @@ We can monitor progress by probing the vCenter task-list:
 govc tasks -f -l
 ```
 
+##VM Operations
+
 After cloning, we can batch-execute commands on all the VMs. For example, the 'uptime' command (run in parallel:
 
 ```bash
@@ -237,6 +239,29 @@ chmod +x run_all.sh
 Thus we can then run parallel commands on all the VMs trivially:
 
 ```bash
-./run_all.sh "uname -a"
+./run_all.sh 'uname -a'
 ```
 
+To set the hostname to the machine id:
+
+```bash
+./run_all.sh 'sudo hostnamectl set-hostname $(cat /etc/machine-id)'
+```
+
+Export the IP addresses of the VMs to a file:
+
+```bash
+govc find -type m -name 'ubuntu-vm*' | xargs govc vm.ip >> worker_vms
+```
+
+Daemonize `FIO` in worker mode:
+
+```bash
+./run_all.sh 'fio --server --daemonize=/tmp/fio.pid'
+```
+
+We can then run an FIO test over the workers:
+
+```bash
+fio --client=worker_vms file-test.fio
+```
