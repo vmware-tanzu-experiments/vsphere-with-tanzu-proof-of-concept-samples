@@ -16,7 +16,6 @@ continue_on_error=all
 [file_throughput]
 bs=256K
 rw=write
-rwmixwrite=90
 percentage_random=20
 direct=1
 new_group
