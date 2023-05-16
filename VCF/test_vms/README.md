@@ -11,7 +11,8 @@ https://blah.cloud/infrastructure/using-cloud-init-for-vm-templating-on-vsphere
 ## Download govc:
 Govc is a lightweight, open-source CLI tool written in Go (and part of the Govmomi/Go library for the vSphere API). Project page: https://github.com/vmware/govmomi/tree/master/govc<br>
 
-To download the latest release, use the command below. As with the majority of Go projects, it is packaged as a single binary (note that the tar command requires root privileges to copy the binary to the correct location):
+To download the latest release, use the command below. As with the majority of Go projects, it is packaged as a single binary.
+Note that the tar command requires **root privileges** to copy the binary to the correct location):
 
 ``` 
 curl -L -o - "https://github.com/vmware/govmomi/releases/latest/download/govc_$(uname -s)_$(uname -m).tar.gz" | tar -C /usr/local/bin -xvzf - govc
