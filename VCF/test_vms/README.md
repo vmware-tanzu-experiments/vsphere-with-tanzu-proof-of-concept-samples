@@ -10,7 +10,7 @@ https://blah.cloud/infrastructure/using-cloud-init-for-vm-templating-on-vsphere
 •	vSphere Portgroup with DHCP to deploy the worker VMs
 
 ## Download govc:
-[Govc](https://github.com/vmware/govmomi/tree/master/govc) is a lightweight, open-source CLI tool written in Go (and part of the Govmomi/Go library for the vSphere API). Project page: <br>
+[govc](https://github.com/vmware/govmomi/tree/master/govc) is a lightweight, open-source CLI tool written in Go (and part of the Govmomi/Go library for the vSphere API). Project page: <br>
 
 To download the latest release, use the command below. As with the majority of Go projects, it is packaged as a single binary.<br>
 Note that the tar command requires **root privileges** to copy the binary to the correct location):
