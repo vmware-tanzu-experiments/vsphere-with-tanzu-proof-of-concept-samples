@@ -1,6 +1,6 @@
 # Creating Test VMs
 Here we demonstrate how to quickly create a set of identical VMs for testing.<br>
-For a more verbose procedure, visit Myles Gray’s blog: 
+This is based (and extends) the procedure detailed in Myles Gray’s blog: 
 https://blah.cloud/infrastructure/using-cloud-init-for-vm-templating-on-vsphere
 
 ## Requirements:
