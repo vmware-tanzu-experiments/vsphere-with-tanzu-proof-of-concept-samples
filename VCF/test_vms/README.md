@@ -22,9 +22,9 @@ curl -L -o - "https://github.com/vmware/govmomi/releases/latest/download/govc_$(
 To authenticate with vCenter, we need to define the username, password and URL, as per the example below:
 ``` 
 export GOVC_USERNAME=administrator@vsphere.local 
-export GOVC_PASSWORD=P@ssw0rd
+export GOVC_PASSWORD=myVCpassword
 export GOVC_INSECURE=1
-export GOVC_URL=10.156.163.1 
+export GOVC_URL=192.150.16.1 
 ```
 
 Additionally, we will need to specify the default datastore and resource pool (we can define this as the default/top-level cluster, as per blow) for deploying our VMs:
