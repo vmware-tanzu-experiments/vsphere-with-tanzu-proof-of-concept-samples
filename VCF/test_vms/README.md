@@ -244,16 +244,35 @@ Thus we can then run parallel commands on all the VMs trivially:
 ./run_all.sh 'uname -a'
 ```
 
-To set the hostname to the machine id:
+## Example, using VMs as worker nodes for FIO
+
+First, set unique hostnames. Easiest way to achive this is to set the hostname to the machine id:
 
 ```bash
 ./run_all.sh 'sudo hostnamectl set-hostname $(cat /etc/machine-id)'
+```
+Ensure time is being syncronized. We can use NTPD or Chrony (for Ubuntu)
+
+```bash
+./run_all.sh 'sudo apt install chrony'
 ```
 
 Export the IP addresses of the VMs to a file:
 
 ```bash
 govc find -type m -name 'ubuntu-vm*' | xargs govc vm.ip >> worker_vms
+```
+
+Create a mount point
+
+```bash
+./run_all.sh 'mkdir -p /mnt/dbfs'
+```
+
+Mount the NFS share
+
+```bash
+/run_all.sh 'mount -t nfs db-fs3.acme.com:/dbfs3 /mnt/dbfs'
 ```
 
 Daemonize `FIO` in worker mode:
