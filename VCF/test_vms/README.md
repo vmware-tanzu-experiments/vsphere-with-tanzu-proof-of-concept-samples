@@ -6,6 +6,7 @@ https://blah.cloud/infrastructure/using-cloud-init-for-vm-templating-on-vsphere
 ## Requirements:
 •	FreeBSD, Linux or MacOS VM/host environment<br>
 •	Latest version of govc (download instructions below)
+•	vSphere Portgroup with DHCP
 
 ## Download govc:
 Govc is a lightweight, open-source CLI tool written in Go (and part of the Govmomi/Go library for the vSphere API). Project page: https://github.com/vmware/govmomi/tree/master/govc<br>
