@@ -5,7 +5,7 @@ https://blah.cloud/infrastructure/using-cloud-init-for-vm-templating-on-vsphere
 
 ## Requirements:
 •	FreeBSD, Linux or MacOS VM/host environment<br>
-•	Latest version of govc (download instructions below)
+•	Latest version of govc (download instructions below) <br>
 •	vSphere Portgroup with DHCP
 
 ## Download govc:
