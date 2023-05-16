@@ -214,7 +214,7 @@ We can monitor progress by probing the vCenter task-list:
 govc tasks -f -l
 ```
 
-##VM Operations
+## VM Operations
 
 After cloning, we can batch-execute commands on all the VMs. For example, the 'uptime' command (run in parallel:
 
