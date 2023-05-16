@@ -14,7 +14,7 @@ Govc is a lightweight, open-source CLI tool written in Go (and part of the Govmo
 To download the latest release, use the command below. As with the majority of Go projects, it is packaged as a single binary.<br>
 Note that the tar command requires **root privileges** to copy the binary to the correct location):
 
-``` 
+```bash 
 curl -L -o - "https://github.com/vmware/govmomi/releases/latest/download/govc_$(uname -s)_$(uname -m).tar.gz" | tar -C /usr/local/bin -xvzf - govc
 ```
 
@@ -119,7 +119,7 @@ https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-pr
 We can either directly hand-edit the VM image JSON or use the `jq` utility (recommended)
 <details>
   <summary> 
-  Updating the VM JSON using `jq`: 
+  Updating the VM JSON using jq: 
   </summary>
   
 For example, we can update the `user-data`:
