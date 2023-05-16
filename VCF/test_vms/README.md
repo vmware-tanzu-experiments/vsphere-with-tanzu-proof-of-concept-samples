@@ -254,7 +254,7 @@ First, set unique hostnames. Easiest way to achive this is to set the hostname t
 Ensure time is being syncronized. We can use NTPD or Chrony (for Ubuntu)
 
 ```bash
-./run_all.sh 'sudo apt install chrony'
+./run_all.sh 'sudo apt -y install chrony'
 ```
 
 Export the IP addresses of the VMs to a file:
