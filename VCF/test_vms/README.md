@@ -9,7 +9,7 @@ https://blah.cloud/infrastructure/using-cloud-init-for-vm-templating-on-vsphere
 •	vSphere Portgroup with DHCP
 
 ## Download govc:
-Govc is a lightweight, open-source CLI tool written in Go (and part of the Govmomi/Go library for the vSphere API). Project page: https://github.com/vmware/govmomi/tree/master/govc<br>
+[Govc](https://github.com/vmware/govmomi/tree/master/govc) is a lightweight, open-source CLI tool written in Go (and part of the Govmomi/Go library for the vSphere API). Project page: <br>
 
 To download the latest release, use the command below. As with the majority of Go projects, it is packaged as a single binary.<br>
 Note that the tar command requires **root privileges** to copy the binary to the correct location):
@@ -112,8 +112,7 @@ Now we can edit the JSON file we extracted earlier. Change the file with the fol
 •	Set the name of the VM<br>
 •	In the ‘user-data’ section, paste in the  base64 encoded data<br>
 
-An example of this file can be seen here:
-https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples/main/VCF/test_vms/ubuntu-vm.json
+An example of this file can be seen [here](https://raw.githubusercontent.com/vmware-tanzu-experiments/vsphere-with-tanzu-proof-of-concept-samples/main/VCF/test_vms/ubuntu-vm.json)
 
 ### Using `jq` to update the VM image JSON
 We can either directly hand-edit the VM image JSON or use the `jq` utility (recommended)
