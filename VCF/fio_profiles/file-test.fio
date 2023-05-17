@@ -9,8 +9,8 @@ startdelay=5
 create_serialize=0
 group_reporting=1
 runtime=300
-ioengine=posixaio
-iodepth=1
+ioengine=libaio
+iodepth=10
 continue_on_error=all
  
 [file_throughput]
