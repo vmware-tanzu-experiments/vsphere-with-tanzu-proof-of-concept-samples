@@ -263,6 +263,8 @@ Install NFS utilities, FIO, etc. This will vary by Linux distro
 ./run_all.sh 'sudo apt install -y nfs-common python-3 libaio-dev fio'
 ```
 
+N.B.: Ensure the same version of FIO is installed locally
+
 Export the IP addresses of the VMs to a file:
 
 ```bash
