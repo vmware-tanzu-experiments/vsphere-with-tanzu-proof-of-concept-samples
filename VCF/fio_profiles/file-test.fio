@@ -14,7 +14,7 @@ iodepth=10
 continue_on_error=all
  
 [file_throughput]
-bs=64K
+bs=4K
 rw=write
 percentage_random=20
 direct=1
