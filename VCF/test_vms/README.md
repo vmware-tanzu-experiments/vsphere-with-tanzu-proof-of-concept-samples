@@ -64,6 +64,8 @@ govc import.spec $vmLocation > ubuntu-vm.json
 
 ### Customise the VM image JSON file
 
+#### User-data file
+
 First, we need a user-data file to pass into cloud-init.
 
 (This file tells cloud-init not to disable vSphere specific configurationd, and we modify the default netplan config file to ensure DHCP addresses are assigned by mac address.)
@@ -104,6 +106,8 @@ Next, we encode the user-data to base64:
 ```
 base64 -i user-data
 ```
+
+#### Customising the JSON file
 
 Now we can edit the JSON file we extracted earlier. Change the file with the following:<br>
 •	Disk provisioning set to ‘thin’<br>
