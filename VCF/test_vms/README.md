@@ -260,7 +260,7 @@ Ensure time is being syncronized. We can use NTPD or Chrony (for Ubuntu)
 Install NFS utilities, FIO, etc. This will vary by Linux distro
 
 ```bash
-./run_all.sh 'sudo apt install -y nfs-common python-3 libaio-dev fio
+./run_all.sh 'sudo apt install -y nfs-common python-3 libaio-dev fio'
 ```
 
 Export the IP addresses of the VMs to a file:
