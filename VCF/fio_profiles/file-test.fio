@@ -2,20 +2,18 @@
 # change nfs address as appropriate
 
 [global]
-nfs_url=nfs://10.156.179.2/dbfs
+nfs_url=nfs://db-fs2.vsanpe.vmware.com/dbfs
 filesize=4G
-time_based=1
-startdelay=5
 create_serialize=0
-group_reporting=1
-runtime=300
+group_reporting
 ioengine=nfs
-iodepth=10
 continue_on_error=all
- 
-[file_throughput]
+filename_format=fio-test.$clientuid
+overwrite=1
+allow_file_create=1
+iodepth=1
 bs=4K
+
+[file_write]
+ramp_time=5s
 rw=write
-percentage_random=20
-direct=1
-new_group
