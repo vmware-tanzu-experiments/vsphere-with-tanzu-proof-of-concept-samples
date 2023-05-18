@@ -1,8 +1,8 @@
 # file test
-# change directory as appropriate 
+# change nfs address as appropriate
 
 [global]
-directory=/mnt/dbfs
+nfs_url=nfs://10.156.179.2/dbfs
 filesize=4G
 time_based=1
 startdelay=5
