@@ -1,4 +1,4 @@
-# file test
+# file (write) test using libnfs
 # change nfs address as appropriate
 
 [global]
