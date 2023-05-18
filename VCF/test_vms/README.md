@@ -264,27 +264,15 @@ Ensure time is being syncronized. We can use NTPD or Chrony (for Ubuntu)
 Install NFS utilities, FIO, etc. This will vary by Linux distro
 
 ```bash
-./run_all.sh 'sudo apt install -y nfs-common python-3 libaio-dev fio'
+./run_all.sh 'sudo apt install -y nfs-common python-3 libaio-dev fio pkg-config libnfs-dev'
 ```
 
-N.B.: Ensure the same version of FIO is installed locally
+N.B.: Ensure the same version of FIO (installed on the workers) is installed locally
 
-Export the IP addresses of the VMs to a file:
+Export the IP addresses of the VMs to a file for FIO to access:
 
 ```bash
 govc find -type m -name 'ubuntu-vm*' | xargs govc vm.ip >> worker_vms
-```
-
-Create a mount point
-
-```bash
-./run_all.sh 'mkdir -p /mnt/dbfs'
-```
-
-Mount the NFS share
-
-```bash
-/run_all.sh 'mount -t nfs db-fs3.acme.com:/dbfs3 /mnt/dbfs'
 ```
 
 Daemonize `FIO` in worker mode:
