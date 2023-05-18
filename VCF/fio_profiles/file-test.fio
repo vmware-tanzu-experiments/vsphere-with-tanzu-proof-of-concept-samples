@@ -9,7 +9,7 @@ startdelay=5
 create_serialize=0
 group_reporting=1
 runtime=300
-ioengine=libaio
+ioengine=nfs
 iodepth=10
 continue_on_error=all
  
