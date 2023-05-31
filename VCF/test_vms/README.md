@@ -160,15 +160,6 @@ mv ubuntu-vm-updated-2.json ubuntu-vm.json
 </details>
 
 
-Once this JSON file has been defined, we can double-check our user-data encoding is still correct:
-
-```bash
-awk -F '"' '/user-data/{getline; print $4}' ubuntu-vm.json | base64 -d''
-```
-
-
-This should return the user-data as we defined above.
-
 
 ## Import OVA to vCenter and Clone
 We can then import the OVA into vCenter, specifying our JSON customization file:
@@ -255,6 +246,13 @@ First, set unique hostnames. Easiest way to achive this is to set the hostname t
 ```bash
 ./run_all.sh 'sudo hostnamectl set-hostname $(cat /etc/machine-id)'
 ```
+Update apt
+
+```bash
+./run_all.sh 'sudo apt update'
+```
+
+
 Ensure time is being syncronized. We can use NTPD or Chrony (for Ubuntu)
 
 ```bash
