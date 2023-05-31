@@ -262,7 +262,7 @@ Ensure time is being syncronized. We can use NTPD or Chrony (for Ubuntu)
 Install NFS utilities, FIO, etc. This will vary by Linux distro
 
 ```bash
-./run_all.sh 'sudo apt install -y nfs-common python-3 libaio-dev fio pkg-config libnfs-dev'
+./run_all.sh 'sudo apt install -y nfs-common python3 libaio-dev fio pkg-config libnfs-dev'
 ```
 
 N.B.: Ensure the same version of FIO (installed on the workers) is installed locally
