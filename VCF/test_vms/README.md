@@ -149,7 +149,7 @@ mv ubuntu-vm-updated-2.json ubuntu-vm.json
 
 </details>
 
-
+<br>
 
 ## Import OVA to vCenter and Clone
 We can then import the OVA into vCenter, specifying our JSON customization file:
