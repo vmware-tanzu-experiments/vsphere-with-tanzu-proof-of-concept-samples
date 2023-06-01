@@ -259,13 +259,35 @@ Ensure time is being syncronized. We can use NTPD or Chrony (for Ubuntu)
 ./run_all.sh 'sudo apt install -y chrony'
 ```
 
-Install NFS utilities, FIO, etc. This will vary by Linux distro
+Install NFS utilities, GCC, make, etc.
 
 ```bash
-./run_all.sh 'sudo apt install -y nfs-common python3 libaio-dev fio pkg-config libnfs-dev'
+./run_all.sh 'sudo apt install -y nfs-common python3 libaio-dev pkg-config libnfs-dev gcc make zlib1g-dev'
+```
+
+Obtain the latest FIO & build
+
+```bash
+./run_all.sh 'git clone https://github.com/axboe/fio.git'
+```
+
+Build FIO
+
+```bash
+./run_all.sh 'cd fio; ./configure'
+./run_all.sh 'cd fio; make'
+./run_all.sh 'cd fio; sudo make install'
 ```
 
 N.B.: Ensure the same version of FIO (installed on the workers) is installed locally
+
+```bash
+git clone https://github.com/axboe/fio.git
+cd fio
+./configure
+make
+make install
+```
 
 Export the IP addresses of the VMs to a file for FIO to access:
 
