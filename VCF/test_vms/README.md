@@ -239,7 +239,11 @@ Thus we can then run parallel commands on all the VMs trivially:
 ./run_all.sh 'uname -a'
 ```
 
-## Example, using VMs as worker nodes for FIO
+<br>
+<br>
+<br>
+
+## Example: using VMs as worker nodes for FIO
 
 First, set unique hostnames. Easiest way to achive this is to set the hostname to the machine id:
 
@@ -265,7 +269,7 @@ Install NFS utilities, GCC, make, etc.
 ./run_all.sh 'sudo apt install -y nfs-common python3 libaio-dev pkg-config libnfs-dev gcc make zlib1g-dev'
 ```
 
-Obtain the latest FIO & build
+Obtain the latest [FIO](https://github.com/axboe/fio) & build
 
 ```bash
 ./run_all.sh 'git clone https://github.com/axboe/fio.git'
@@ -280,6 +284,7 @@ Build FIO
 ```
 
 N.B.: Ensure the same version of FIO (installed on the workers) is installed locally
+For example:
 
 ```bash
 git clone https://github.com/axboe/fio.git
