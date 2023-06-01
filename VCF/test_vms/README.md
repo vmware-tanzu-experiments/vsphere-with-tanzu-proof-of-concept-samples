@@ -95,17 +95,7 @@ power_state:
 
   </details>
 
-If available, use cloud-init to check the user-data file:
 
-```
-cloud-init schema --config-file user-data
-```
-
-
-Next, we encode the user-data to base64:
-```
-base64 -i user-data
-```
 
 #### Customising the JSON file
 
@@ -132,13 +122,13 @@ For example, we can update the `user-data`:
 jq --arg udata "$(base64 -i user-data)" '(.PropertyMapping[] | select(.Key=="user-data")).Value |= $udata' ubuntu-vm.json > ubuntu-vm-updated.json
 ```
 
-We can add the public key, stored locally:
+We can add the public key, EITHER stored locally:
   
 ```
 jq --arg pubkey "$(cat ~/.ssh/id_rsa.pub)" '(.PropertyMapping[] | select(.Key=="public-keys")).Value |= $pubkey' ubuntu-vm-updated.json > ubuntu-vm-updated-1.json
 ```
   
-Or we could add a public key stored in a user's github profile: <br>
+OR we could add a public key stored in a user's github profile: <br>
 ***N.B.: REPLACE WITH DESIRED `USER`!***
 
 ```bash
