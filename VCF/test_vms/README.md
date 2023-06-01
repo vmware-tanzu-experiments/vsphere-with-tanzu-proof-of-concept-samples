@@ -208,6 +208,8 @@ We can monitor progress by probing the vCenter task-list:
 ```
 govc tasks -f -l
 ```
+<br>
+<br>
 
 ## VM Operations
 
