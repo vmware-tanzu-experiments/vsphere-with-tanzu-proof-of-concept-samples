@@ -68,7 +68,7 @@ govc import.spec $vmLocation > ubuntu-vm.json
 
 First, we need a user-data file to pass into cloud-init.
 
-(This file tells cloud-init not to disable vSphere specific configurationd, and we modify the default netplan config file to ensure DHCP addresses are assigned by mac address.)
+(This file tells cloud-init not to disable vSphere customsiztion, and we modify the default netplan config file to ensure DHCP addresses are assigned by mac address)
 
 An example user-data file can be direcly downloaded using curl
 ```
