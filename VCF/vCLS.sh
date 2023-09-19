@@ -1,8 +1,13 @@
 #!/bin/bash
 
-# Used to turn on/off vCLS RETREAT mode
-# to tell vC to remove / re-create vCLS VMs
-# REQUIRES GOVC
+####
+# Wrapper script to easily turn on/off vCLS RETREAT mode
+# -to tell vCenter to remove / re-create vCLS VMs
+#
+# Download govc: https://github.com/vmware/govmomi/releases
+# 
+# Author: Dharmesh Bhatt
+####
 
 
 usage() 
