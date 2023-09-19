@@ -1,10 +1,21 @@
 #!/bin/bash
+
+####
+# Example Host Prep script for VCF using govc
+# Download govc: https://github.com/vmware/govmomi/releases
+#
+# CHANGE VARIABLES BELOW AS NEEDED
+# 
+# Author: Dharmesh Bhatt
+####
+
+#####################################
+# Update here:
  
 ### govc/VC params: input esxi credentials
 export GOVC_USERNAME=root
 export GOVC_PASSWORD=P@ssw0rd
 export GOVC_INSECURE=1
- 
  
 ### variables: change as needed
 START_IP=10.156.176.10
@@ -14,6 +25,10 @@ DNS_SERVER=10.156.176.1
 NTP_SERVER=10.156.176.1
 MGMT_VLAN=1284
 VSWITCH=vSwitch0
+
+#####################################
+
+
  
 ####
 # evaluate loop bounds
